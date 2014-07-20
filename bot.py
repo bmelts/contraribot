@@ -9,8 +9,8 @@ class ContraribotStreamer(TwythonStreamer):
     def on_error(self, status_code, data):
         print status_code
 
-twitter = TwythonStreamer(os.environ['APP_KEY'],
-                          os.environ['APP_SECRET'],
-                          os.environ['OAUTH_TOKEN'],
-                          os.environ['OAUTH_TOKEN_SECRET'])
+twitter = ContraribotStreamer(os.environ['APP_KEY'],
+                              os.environ['APP_SECRET'],
+                              os.environ['OAUTH_TOKEN'],
+                              os.environ['OAUTH_TOKEN_SECRET'])
 twitter.statuses.filter(track='poop')
