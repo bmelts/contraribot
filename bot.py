@@ -26,6 +26,7 @@ opposites = {
 search_regex = re.compile(r'(%s)\b' % '|'.join(sorted(searches, None, len, True)), re.IGNORECASE)
 opposite_regex = re.compile(r'\b(%s)\b' % '|'.join(sorted(opposites.keys(), None, len, True)), re.IGNORECASE)
 html_decode = re.compile('&(%s);' % '|'.join(name2codepoint))
+minutes_between_posts = int(os.environ['MINUTES_BETWEEN_POSTS'])
 
 twitter = Twython(os.environ['APP_KEY'],
                   os.environ['APP_SECRET'],
@@ -62,7 +63,7 @@ class ContraribotStreamer(TwythonStreamer):
             twitter.update_status(status=self.tweet)
         self.tweet = None
         self.tweet_count = 0
-        self.timer = Timer(1 * 60, self.post_tweet)
+        self.timer = Timer(minutes_between_posts * 60, self.post_tweet)
         self.timer.start()
 
 streamer = ContraribotStreamer(os.environ['APP_KEY'],
