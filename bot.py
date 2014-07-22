@@ -15,6 +15,7 @@ opposites = {
     'can': 'CAN’T',
     'will': 'WON’T',
     'i\'ll': 'I WON’T',
+    'i’ll': 'I WON’T',
     'can\'t': 'CAN',
     'can’t': 'CAN',
     'cannot': 'CAN',
