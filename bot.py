@@ -61,7 +61,10 @@ class ContraribotStreamer(TwythonStreamer):
 
     def post_tweet(self):
         if self.tweet:
-            twitter.update_status(status=self.tweet)
+            try:
+                twitter.update_status(status=self.tweet)
+            except:
+                pass
         self.tweet = None
         self.tweet_count = 0
         self.timer = Timer(minutes_between_posts * 60, self.post_tweet)
